@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.2">
+  <zoom_level>9</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>288</x>
+      <y>54</y>
+      <w>513</w>
+      <h>504</h>
+    </coordinates>
+    <panel_attributes>Main.cpp
+--
+C12832 lcd(D11, D13, D12, D7, D10);
+LM75B sensor(D14, D15);
+int tempMin; //variabile per temperatura minima
+int tempMax; //variabile per temperatura massima
+int tempAvg; //variabile per temperatura media 
+int indexAvg; //variabile per il numero totale delle temperature recepite
+int sumAvg; //variabile per sommare le temperature 
+--
+
+int main()
+lcd.cls(); //svuota il display
+printf("Temp = %d\n", (int)sensor.temp()); //stampa sullo schermo lcd la temperatura
+sensor.temp(); //acquisisce il valore
+if(temp&lt;tempMin){
+            tempMin=temp;
+            }
+            if(temp&gt;tempMax){
+                tempMax=temp;
+            }
+            if(tempAvg==0){
+                tempAvg=temp;
+                indexAvg++;
+                sumAvg=temp;
+            }
+            else if(tempAvg!=0){
+                sumAvg=sumAvg+temp;
+                tempAvg=sumAvg/indexAvg;
+                indexAvg++;
+            }//insieme di funzioni che aggiorna il valore delle 
+               variabili in base al valore letto dal sensore
+               e aggiorna il valore dello schermo lcd 
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
